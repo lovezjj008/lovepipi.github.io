@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <link type="text/css" rel="stylesheet" href="css/styles.css" />
+    <script type="text/javascript" src="comonjs/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="comonjs/modernizr-2.6.2.min.js"></script>
+    <script type="text/javascript" src="js/starbg.js"></script>
+
+    <style>
+        *{ margin:0; padding:0; }
+        canvas{ display: block; margin: 0; width:100%; height:100%; position: fixed; left: 0; right: 0; top:0; bottom:0;
+            z-index: -1; }
+        .content{ width: 100%; margin: 0 auto; padding-top:160px;}
+		.rabitBg{ position:fixed; left:0; top:50%; width: 50%;}
+		.dy {
+		  position: absolute;
+      top: 20px;
+      right: 10px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+		}
+		body {
+		  font-family: "宋体" !important;		}
+		@keyframes dy {
+			from{
+			  transform: rotate(0deg);}
+			to{
+			  transform: rotate(360deg);}
+		}
+		.dy.active {
+        -webkit-animation: spin 2s linear infinite;
+        animation: dy 2s linear infinite;
+		}
+		.jc {
+		  font-size: 12px;
+		  color: red;
+		  position: absolute;
+		  right: 20px;
+		  bottom: 200px;
+		  text-decoration: underline;
+		}
+		 @keyframes myfirst {
+        0% {
+            width: 0;
+        }
+        75% {
+            width: 50%;
+        }
+        100% {
+            width: 80%;
+        }
+    }
+		.jcbox {
+		  position: absolute;
+		  height: 100%;
+		  background: rgba(0,0,0,0.8);
+		  top: 0;
+		  left: 0;
+		  color: #FFFFFF;
+		  padding: 15px;
+		  line-height: 24px;
+		  display: none;
+      animation: myfirst 0.3s;
+		}
+		.jcbox.active{
+		  display: block;
+      animation: myfirst 0.3s;
+		}
+    </style>
+</head>
+<body>
+   <canvas id="fullstarbg">你的浏览器不支持canvas标签</canvas>
+   <div class="content">
+     <img src="./rabit.png" class="rabitBg" />
+     <img id="dybtn"  class = "dy" src="./dy2.jpg"/>
+      <h1>献给最可爱的皮皮<h1>
+      <a class="jc">
+                   这里有爱你的检查
+      </a>
+     </div>
+   </div>
+   <div class="jcbox">
+     <div style="margin: 0 auto; text-align: center; color: #FA5527;">
+       <h3 >给皮皮的检查书</h3>
+
+     </div>
+      <div>可爱漂亮坏坏的皮皮娘娘：<br />遵照您的圣旨，我立刻，马上，并且非常迅速的对自己做出了深刻的检讨，以下是我对自己的种种恶果的分析以及日后的悔改，请娘娘批阅!</div>
+      <div>1.小人不该主动挂掉皮皮电话, 以后未得娘娘允许, 臣妾电话永远为娘娘在线</div>
+      <div>2.小人不该忘记皮皮手机号, 至此铭记在心</div>
+      <div>3.小人不该顶嘴狡辩, 以后娘娘的一切命令就是最高警戒....</div>
+      <div>曾经, 我天真的以为皮皮是个单纯可爱的小公主, 我错了, 原来pipi是最单纯最可爱最温柔最善良的小公主加小天使;</div>
+      <div>曾经, 我天真的以为我是无法无天的孙猴子, 我错了, 原来皮皮就是那个如来佛主;</div>
+      <div>曾经, 曾经, 曾经, 没有曾经了, 只有现在,立刻,马上, 未来, 挚爱皮皮一个人...(脸红了)</div>
+      <div style="text-align: center;">
+           <div>藏头诗</div>
+           <div>庞家有女初长成</div>
+           <div>计划生育外降世</div>
+           <div>平萍如水来相遇</div>
+           <div>我唯独恋深深意</div>
+           <div>爱到浓处夜夜思</div>
+           <div>你是我的小可爱</div>
+      </div>
+      <div style="margin-left: 120px;">---------------勿念</div>
+      <div style="text-align: center;">
+        <img id="pipipic"  style="width: 80%;" src="./pp.jpg"/>
+      </div>
+   </div>
+   <audio id= "bgAudio"   loop>
+    <!-- <source src="song.ogg" type="audio/ogg" /> -->
+     <source src="./lxy.mp3" type="audio/mpeg" />
+     Your browser does not support the audio element.
+    </audio>
+   <script>
+       $(document).ready(function () {
+         function audioAutoPlay() {
+              var audio = document.getElementById('bgAudio');
+              audio.play();
+          }
+         $('.dy').click(function(){
+           var audio = document.getElementById('bgAudio');
+            if(audio !== null) {
+            //检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+              if(audio.paused) {
+                audio.play(); //audio.play();// 这个就是播放
+                $("#dybtn").addClass("active")
+              } else {
+                audio.pause(); // 这个就是暂停
+                $("#dybtn").removeClass("active")
+              }
+            }
+         })
+        document.getElementById("bgAudio").volume = 0.3;
+        $('#pipipic').click(function() {
+          $('.jcbox').removeClass('active')
+        })
+        $('.jc').click(function(){
+          $('.jcbox').addClass('active')
+        })
+       })
+
+
+   </script>
+</body>
+</html>
